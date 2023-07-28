@@ -1,0 +1,55 @@
+
+<div class="container mt-4">
+  <div class="card" style="padding-left: 2%;padding-right: 2%;padding-top: 1%;padding-bottom: 2%">
+    <h1>Add user</h1>
+<form>
+  <div class="alert alert-danger" [hidden]="!error">{{ error }}</div>
+  <div class="alert alert-success" [hidden]="!success">{{ success }}</div>
+  <div class="form-group" style="padding-bottom: 1%;">
+    <label >Name</label>
+    <input [(ngModel)]="name" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="name" placeholder="Enter name">
+  </div>
+  <div class="form-group" style="padding-bottom: 1%;">
+  <label >Address</label>
+  <input [(ngModel)]="address" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="address" placeholder="Enter address">
+</div>
+<div class="form-group" style="padding-bottom: 1%;">
+<label >Phone number</label>
+<input [(ngModel)]="mobile" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="mobile" placeholder="Enter phone number">
+</div>
+
+  <button type="submit"  class="btn btn-primary" (click)="save()">Submit</button>
+</form>
+</div>
+</div>
+
+
+
+
+<div class="container mt-4">
+    <h1>User table</h1>
+<table class="table">
+  <thead>
+    <h1 *ngIf="!isResultLoaded">Loading.....</h1>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">MOBILE</th>
+      <th scope="col">OPTION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let companyItem of companyArray">
+      <th scope="row">{{companyItem.id}}</th>
+      <td>{{companyItem.name}}</td>
+      <td>{{companyItem.address}}</td>
+      <td>{{ companyItem.mobile }}</td>
+      <td><button type="button" class="btn btn-success" (click)="setUpdate(companyItem)">Edit</button> &nbsp;
+        <button type="button" class="btn btn-danger" (click)="setDelete(companyItem)">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
